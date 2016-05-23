@@ -1,0 +1,16 @@
+package test;
+
+public class TestFiles {
+
+	public static void main(String[] args) {
+		
+	}
+	
+	public void createWorkdayFile(){
+		
+	}
+	
+	public void createWeekendFile(){
+		
+	}
+}
