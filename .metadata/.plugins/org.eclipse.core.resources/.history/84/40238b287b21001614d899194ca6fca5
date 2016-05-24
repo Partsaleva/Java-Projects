@@ -1,0 +1,23 @@
+package fileControl;
+
+import java.util.Calendar;
+import java.util.List;
+
+public class FileLoader {
+
+	public void chooseFile(){
+		Calendar startDate = Calendar.getInstance();
+		int dayOfWeek = startDate.get(Calendar.DAY_OF_WEEK);
+		if ( dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) {
+		    loadFile("holiday365");
+		} else {
+			loadFile("work365");
+		}
+	}
+	
+	public List<String> loadFile(String fileName){
+		
+		return null;
+		
+	}
+}
