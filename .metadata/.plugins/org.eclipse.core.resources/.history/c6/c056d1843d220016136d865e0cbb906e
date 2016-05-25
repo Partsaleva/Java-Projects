@@ -1,0 +1,21 @@
+package main;
+
+import java.io.IOException;
+
+
+
+
+public class RunProgram {
+
+	public static void main(String[] args) {
+		Menu menu=new Menu();
+		try {
+			menu.startNewYear();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}

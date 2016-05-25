@@ -1,0 +1,14 @@
+package main;
+
+import java.io.IOException;
+
+import fileControl.YearFiles;
+
+public class Menu {
+
+	public void startNewYear() throws IOException{
+		YearFiles files=new YearFiles();
+		files.createFileForYear("files/work","files/work365");
+		files.createFileForYear("files/holiday","files/holiday365");
+	}
+}
