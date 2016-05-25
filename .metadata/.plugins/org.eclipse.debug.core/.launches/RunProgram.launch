@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/365days/src/main/RunProgram.java"/>
+<listEntry value="/One Year Love/src/oneYearLove/source/main/RunProgram.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
 </listAttribute>
-<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="main.RunProgram"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="365days"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="oneYearLove.source.main.RunProgram"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="One Year Love"/>
 </launchConfiguration>

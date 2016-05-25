@@ -28,4 +28,5 @@
 <fullyQualifiedTypeName name="java.io.BufferedInputStream"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
 <fullyQualifiedTypeName name="fileControl.FileAccess"/>
+<fullyQualifiedTypeName name="oneYearLove.source.fileControl.FileAccess"/>
 </qualifiedTypeNameHistroy>
