@@ -13,17 +13,18 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
+
 
 public class FileAccess {
 
 	public List<String> chooseFile() throws FileNotFoundException, IOException, ClassNotFoundException{
 		List<String> data=null;
-		Calendar startDate = Calendar.getInstance();
-		int dayOfWeek = startDate.get(Calendar.DAY_OF_WEEK);
-		if ( dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) {
-			data = loadFile("holiday365");
+		
+		if (isWeekend()) {
+			data = loadFile("files/holiday365");
 		} else {
-			data = loadFile("work365");
+			data = loadFile("files/work365");
 		}
 		return data;
 	}
@@ -41,9 +42,14 @@ public class FileAccess {
 		return data;		
 	}
 	
-	public void saveFile(List<String> fileData, String dest) 
+	private void saveFile(List<String> fileData) 
 			throws FileNotFoundException, IOException{
-		
+		String dest;
+		if (isWeekend()) {
+			dest = "files/holiday365";
+		} else {
+			dest = "files/work365";
+		}
 		try(ObjectOutputStream out = new ObjectOutputStream(
 				new BufferedOutputStream(
 						new FileOutputStream(dest)))){
@@ -60,8 +66,33 @@ public class FileAccess {
 			while((line =in.readLine())!= null){
 				fileData.add(line);
 			}
+		}		
+		saveFile(fileData);		
+	}
+	
+	private boolean isWeekend(){
+		Calendar startDate = Calendar.getInstance();
+		int dayOfWeek = startDate.get(Calendar.DAY_OF_WEEK);
+		return dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY;
+	}
+	
+	public String getTicket(){
+		String ticket=null;
+		try {
+			List<String> tickets= chooseFile();
+			Random index=new Random();
+			if (!tickets.isEmpty()) {
+				ticket=tickets.remove( index.nextInt( tickets.size() ));
+			}else {;}						
+			saveFile(tickets);
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
-		saveFile(fileData, dest);		
+		return ticket;
 	}
 }
