@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.wb.internal.swing.laf.ui.AddCustomLookAndFeelDialog">
+		<item value="346" key="x"/>
+		<item value="738" key="width"/>
+		<item value="188" key="y"/>
+		<item value="444" key="height"/>
+	</section>
+	<section name="org.eclipse.wb.internal.swing.model.property.editor.icon.ImagePropertyEditor$ImageDialog">
+		<item value="221" key="x"/>
+		<item value="989" key="width"/>
+		<item value="110" key="y"/>
+		<item value="600" key="height"/>
+	</section>
+</section>

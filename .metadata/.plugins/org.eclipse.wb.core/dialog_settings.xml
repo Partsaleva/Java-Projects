@@ -6,4 +6,14 @@
 		<item value="214" key="y"/>
 		<item value="392" key="height"/>
 	</section>
+	<section name="org.eclipse.wb.internal.core.nls.ui.NlsDialog">
+		<item value="374" key="x"/>
+		<item value="683" key="width"/>
+		<item value="218" key="y"/>
+		<item value="384" key="height"/>
+	</section>
+	<section name="org.eclipse.wb.internal.core.editor.actions.assistant.LayoutAssistantWindow">
+		<item value="683" key="x"/>
+		<item value="364" key="y"/>
+	</section>
 </section>
