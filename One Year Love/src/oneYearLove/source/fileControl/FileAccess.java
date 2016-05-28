@@ -3,7 +3,7 @@ package oneYearLove.source.fileControl;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.FileInputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -18,13 +18,14 @@ import java.util.Random;
 
 public class FileAccess {
 
+	
 	public List<String> chooseFile() throws FileNotFoundException, IOException, ClassNotFoundException{
 		List<String> data=null;
 		
 		if (isWeekend()) {
-			data = loadFile("files/holiday365");
+			data = loadFile("holiday365");
 		} else {
-			data = loadFile("files/work365");
+			data = loadFile("work365");
 		}
 		return data;
 	}
@@ -36,7 +37,9 @@ public class FileAccess {
 		List<String> data=null;
 		try(ObjectInputStream in=new ObjectInputStream(
 				new BufferedInputStream(
-						new FileInputStream(fileName)))){
+						//get file as stream to include it in runnable jar
+						getClass().getResourceAsStream(
+								File.separator+fileName)))){
 			data=(List<String>) in.readObject();
 		}
 		return data;		
@@ -44,11 +47,11 @@ public class FileAccess {
 	
 	private void saveFile(List<String> fileData) 
 			throws FileNotFoundException, IOException{
-		String dest;
+		File dest;
 		if (isWeekend()) {
-			dest = "files/holiday365";
+			dest = new File("files/holiday365");
 		} else {
-			dest = "files/work365";
+			dest = new File("files/work365");
 		}
 		try(ObjectOutputStream out = new ObjectOutputStream(
 				new BufferedOutputStream(
@@ -67,7 +70,11 @@ public class FileAccess {
 				fileData.add(line);
 			}
 		}		
-		saveFile(fileData);		
+		try(ObjectOutputStream out = new ObjectOutputStream(
+				new BufferedOutputStream(
+						new FileOutputStream(dest)))){
+			out.writeObject(fileData);
+		}	
 	}
 	
 	private boolean isWeekend(){
@@ -83,7 +90,7 @@ public class FileAccess {
 			Random index=new Random();
 			if (!tickets.isEmpty()) {
 				ticket=tickets.remove( index.nextInt( tickets.size() ));
-			}else {;}						
+			}						
 			saveFile(tickets);
 			
 		} catch (FileNotFoundException e) {
