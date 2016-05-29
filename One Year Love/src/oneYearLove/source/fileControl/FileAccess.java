@@ -1,6 +1,5 @@
 package oneYearLove.source.fileControl;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,9 +15,10 @@ import java.util.List;
 import java.util.Random;
 
 
-public class FileAccess {
+public class FileAccess  extends javax.swing.JInternalFrame{
 
-	
+	private static final long serialVersionUID = 1L;
+
 	public List<String> chooseFile() throws FileNotFoundException, IOException, ClassNotFoundException{
 		List<String> data=null;
 		
@@ -36,10 +36,10 @@ public class FileAccess {
 		
 		List<String> data=null;
 		try(ObjectInputStream in=new ObjectInputStream(
-				new BufferedInputStream(
+				
 						//get file as stream to include it in runnable jar
 						getClass().getResourceAsStream(
-								File.separator+fileName)))){
+								File.separator+fileName))){
 			data=(List<String>) in.readObject();
 		}
 		return data;		
@@ -54,9 +54,9 @@ public class FileAccess {
 			dest = new File("files/work365");
 		}
 		try(ObjectOutputStream out = new ObjectOutputStream(
-				new BufferedOutputStream(
-						new FileOutputStream(dest)))){
+						new FileOutputStream(dest))){
 			out.writeObject(fileData);
+			System.out.println(fileData);
 		}
 	}
 	
@@ -89,9 +89,12 @@ public class FileAccess {
 			List<String> tickets= chooseFile();
 			Random index=new Random();
 			if (!tickets.isEmpty()) {
-				ticket=tickets.remove( index.nextInt( tickets.size() ));
+				ticket=tickets.remove(index.nextInt( tickets.size()));
+				saveFile(tickets);
+			}else{
+				ticket="Годината мина :(";
 			}						
-			saveFile(tickets);
+			
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

@@ -85,6 +85,7 @@ public class Box extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, file.getTicket());
+				
 			}
 		});
 		

@@ -11,18 +11,11 @@ public class TestFiles {
 		test.holidayFile();
 	}
 	
-	public void createWorkdayFile(){
-		
-	}
-	
-	public void createHolidayFile(){
-		
-	}
 	
 	private void workFile(){
-		try(FileWriter f=new FileWriter("work.txt")){
+		try(FileWriter f=new FileWriter("files/work")){
 			for (int i = 1; i < 101; i++) {
-				f.write("WorkdayTicket"+ "_"+i);
+				f.write("работен ден"+ "_"+i);
 				f.write(System.getProperty("line.separator"));
 			}
 		} catch (IOException e) {
@@ -32,9 +25,9 @@ public class TestFiles {
 	}
 	
 	private void holidayFile(){
-		try(FileWriter f=new FileWriter("holiday.txt")){
+		try(FileWriter f=new FileWriter("files/holiday")){
 			for (int i = 1; i < 101; i++) {
-				f.write("HolidayTicket"+ "_"+i);
+				f.write("почивен ден"+ "_"+i);
 				f.write(System.getProperty("line.separator"));
 			}
 		} catch (IOException e) {
