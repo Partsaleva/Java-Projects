@@ -1,5 +1,7 @@
 package oneYearLove.source.fileControl;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,10 +16,16 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
-public class FileAccess  extends javax.swing.JInternalFrame{
+import oneYearLove.gui.Box;
+import oneYearLove.gui.InnerFrame;
 
-	private static final long serialVersionUID = 1L;
+
+
+public class FileAccess implements ActionListener{
+
 
 	public List<String> chooseFile() throws FileNotFoundException, IOException, ClassNotFoundException{
 		List<String> data=null;
@@ -104,5 +112,13 @@ public class FileAccess  extends javax.swing.JInternalFrame{
 			e.printStackTrace();
 		}
 		return ticket;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		InnerFrame frame=new InnerFrame();
+		frame.setVisible(true);
+		String ticket=getTicket();
+		//JOptionPane.showMessageDialog(null, ticket);	
 	}
 }

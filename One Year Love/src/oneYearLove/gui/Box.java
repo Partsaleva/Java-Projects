@@ -11,32 +11,22 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
+
 
 import oneYearLove.source.fileControl.FileAccess;
 
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
 public class Box extends JFrame {
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+
 	private JButton btnNewButton;
-
-	/**
-	 * Launch the application.
-	 */
-	
-
-	/**
-	 * Create the frame.
-	 */
 	public Box() {
 		
 		initComponents();
-		createEvents();
 		
 	}
 
@@ -44,9 +34,7 @@ public class Box extends JFrame {
 	
 
 	private void initComponents() {
-		
-
-		
+		JPanel contentPane;	
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Box.class.getResource("/oneYearLove/resourses/love_icon.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -60,6 +48,8 @@ public class Box extends JFrame {
 		
 		btnNewButton.setIcon(new ImageIcon(Box.class.getResource("/oneYearLove/resourses/love_icon.png")));
 		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.addActionListener(new FileAccess());
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -80,14 +70,5 @@ public class Box extends JFrame {
 	}
 	
 	
-	private void createEvents() {
-		FileAccess file=new FileAccess();
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, file.getTicket());
-				
-			}
-		});
-		
-	}
+	
 }

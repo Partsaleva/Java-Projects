@@ -1,0 +1,21 @@
+package oneYearLove.source.main;
+
+import java.awt.EventQueue;
+import java.io.File;
+
+import oneYearLove.gui.Box;
+import oneYearLove.source.fileControl.FileAccess;
+
+
+
+public class RunProgram {
+
+	//TODO problem when runnable jar is exported
+	public static void main(String[] args) {
+			
+		FileAccess f=new FileAccess();
+					
+				
+	}
+
+}

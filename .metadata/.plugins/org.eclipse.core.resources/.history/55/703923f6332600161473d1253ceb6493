@@ -1,0 +1,9 @@
+package oneYearLove.gui;
+
+import javax.swing.JFrame;
+
+public class InnerFrame extends JFrame{
+
+	private static final long serialVersionUID = 2273146068459299278L;
+
+}
