@@ -1,0 +1,37 @@
+package oneYearLove.gui;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import oneYearLove.source.fileControl.FileAccess;
+
+public class Panel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6876156524316582007L;
+
+	public Panel() {
+        setBorder(BorderFactory.createLineBorder(Color.black));
+    }
+
+    public Dimension getPreferredSize() {
+        return new Dimension(250,200);
+    }
+
+    public void paintComponent(Graphics g) {
+    	FileAccess f=new FileAccess();
+        super.paintComponent(g);       
+        String ticket=f.getTicket();
+        // Draw Text
+        g.drawString(ticket,10,20);
+    }  
+	
+}

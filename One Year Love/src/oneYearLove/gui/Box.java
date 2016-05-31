@@ -14,6 +14,8 @@ import javax.swing.ImageIcon;
 
 
 import oneYearLove.source.fileControl.FileAccess;
+import javax.swing.JLabel;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 
 public class Box extends JFrame {
@@ -37,38 +39,44 @@ public class Box extends JFrame {
 		JPanel contentPane;	
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Box.class.getResource("/oneYearLove/resourses/love_icon.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(80, 80, 250, 250);
 		contentPane = new JPanel();
 		
 		contentPane.setBackground(new Color(255, 175, 175));
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		
-		btnNewButton = new JButton("CLICK ME!");
+		btnNewButton = new JButton("");
 		
-		btnNewButton.setIcon(new ImageIcon(Box.class.getResource("/oneYearLove/resourses/love_icon.png")));
-		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.setIcon(new ImageIcon(Box.class.getResource("/oneYearLove/resourses/heart-icon.png")));
+		btnNewButton.setBackground(Color.PINK);
+		btnNewButton.setBorder(null);
 		btnNewButton.addActionListener(new FileAccess());
 		
+		JLabel lblNeclwLabel = new JLabel("Click me");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(157)
-					.addComponent(btnNewButton)
-					.addContainerGap(161, Short.MAX_VALUE))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(97)
+							.addComponent(lblNeclwLabel))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(57)
+							.addComponent(btnNewButton)))
+					.addContainerGap(65, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(108)
+					.addGap(35)
 					.addComponent(btnNewButton)
-					.addContainerGap(136, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblNeclwLabel, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(25, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 		
 	}
-	
-	
-	
 }
