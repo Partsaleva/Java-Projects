@@ -18,8 +18,8 @@ public class Menu {
 	}
 	public static void startNewYear() throws IOException{
 		
-		createFileForYear("files/work","files/work365");
-		createFileForYear("files/holiday","files/holiday365");
+		createFileForYear("bin/files/work","bin/files/work365");
+		createFileForYear("bin/files/holiday","bin/files/holiday365");
 	}
 	
 	public static void createFileForYear(String sourse, String dest) throws IOException{

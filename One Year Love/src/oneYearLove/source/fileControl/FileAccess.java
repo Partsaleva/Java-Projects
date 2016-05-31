@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
@@ -16,11 +17,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import oneYearLove.gui.Box;
-import oneYearLove.gui.InnerFrame;
+
 
 
 
@@ -31,9 +30,9 @@ public class FileAccess implements ActionListener{
 		List<String> data=null;
 		
 		if (isWeekend()) {
-			data = loadFile("holiday365");
+			data = loadFile("files"+File.separator+"holiday365");
 		} else {
-			data = loadFile("work365");
+			data = loadFile("files"+File.separator+"work365");
 		}
 		return data;
 	}
@@ -42,12 +41,12 @@ public class FileAccess implements ActionListener{
 	public List<String> loadFile(String fileName) 
 			throws FileNotFoundException, IOException, ClassNotFoundException{
 		
+		ClassLoader classLoader = getClass().getClassLoader();
+		InputStream stream =classLoader.getResourceAsStream(fileName);
+		
+		
 		List<String> data=null;
-		try(ObjectInputStream in=new ObjectInputStream(
-				
-						//get file as stream to include it in runnable jar
-						getClass().getResourceAsStream(
-								File.separator+fileName))){
+		try(ObjectInputStream in=new ObjectInputStream(stream)){
 			data=(List<String>) in.readObject();
 		}
 		return data;		
@@ -57,15 +56,16 @@ public class FileAccess implements ActionListener{
 			throws FileNotFoundException, IOException{
 		File dest;
 		if (isWeekend()) {
-			dest = new File("files/holiday365");
+			dest = new File("bin"+File.separator+"files"+File.separator+"holiday365");
 		} else {
-			dest = new File("files/work365");
+			dest = new File("bin"+File.separator+"files"+File.separator+"work365");
 		}
 		try(ObjectOutputStream out = new ObjectOutputStream(
 						new FileOutputStream(dest))){
 			out.writeObject(fileData);
 			System.out.println(fileData);
 		}
+		
 	}
 	
 	
@@ -116,9 +116,9 @@ public class FileAccess implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		InnerFrame frame=new InnerFrame();
-		frame.setVisible(true);
+		//InnerFrame frame=new InnerFrame();
+	//	frame.setVisible(true);
 		String ticket=getTicket();
-		//JOptionPane.showMessageDialog(null, ticket);	
+		JOptionPane.showMessageDialog(null, ticket);	
 	}
 }
