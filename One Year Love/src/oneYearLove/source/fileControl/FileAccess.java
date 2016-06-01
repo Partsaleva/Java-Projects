@@ -2,17 +2,14 @@ package oneYearLove.source.fileControl;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
@@ -30,9 +27,9 @@ public class FileAccess implements ActionListener{
 		List<String> data=null;
 		
 		if (isWeekend()) {
-			data = loadFile("files"+File.separator+"holiday365");
+			data = loadFile("holiday365");
 		} else {
-			data = loadFile("files"+File.separator+"work365");
+			data = loadFile("work365");
 		}
 		return data;
 	}
@@ -42,11 +39,11 @@ public class FileAccess implements ActionListener{
 			throws FileNotFoundException, IOException, ClassNotFoundException{
 		
 		ClassLoader classLoader = getClass().getClassLoader();
-		InputStream stream =classLoader.getResourceAsStream(fileName);
-		
+		InputStream stream =classLoader.getResourceAsStream(fileName);	
 		
 		List<String> data=null;
-		try(ObjectInputStream in=new ObjectInputStream(stream)){
+		try(ObjectInputStream in=new ObjectInputStream(
+				new BufferedInputStream(stream))){
 			data=(List<String>) in.readObject();
 		}
 		return data;		
@@ -56,9 +53,9 @@ public class FileAccess implements ActionListener{
 			throws FileNotFoundException, IOException{
 		File dest;
 		if (isWeekend()) {
-			dest = new File("bin"+File.separator+"files"+File.separator+"holiday365");
+			dest = new File("bin"+File.separator+"holiday365");
 		} else {
-			dest = new File("bin"+File.separator+"files"+File.separator+"work365");
+			dest = new File("bin"+File.separator+"work365");
 		}
 		try(ObjectOutputStream out = new ObjectOutputStream(
 						new FileOutputStream(dest))){
@@ -69,21 +66,7 @@ public class FileAccess implements ActionListener{
 	}
 	
 	
-	public void createFileForYear(String sourse, String dest) throws IOException{
-		List<String> fileData=new ArrayList<String>();
-		try(BufferedReader in = new BufferedReader(
-				new FileReader(sourse))){
-			String line=null;
-			while((line =in.readLine())!= null){
-				fileData.add(line);
-			}
-		}		
-		try(ObjectOutputStream out = new ObjectOutputStream(
-				new BufferedOutputStream(
-						new FileOutputStream(dest)))){
-			out.writeObject(fileData);
-		}	
-	}
+	
 	
 	private boolean isWeekend(){
 		Calendar startDate = Calendar.getInstance();
