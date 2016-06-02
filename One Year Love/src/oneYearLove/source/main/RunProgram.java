@@ -8,7 +8,6 @@ import oneYearLove.gui.Box;
 
 public class RunProgram {
 
-	//TODO problem when runnable jar is exported
 	public static void main(String[] args) {
 		
 		

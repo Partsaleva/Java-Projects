@@ -14,7 +14,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
-import javax.swing.JOptionPane;
+
+
+import oneYearLove.gui.InnerFrame;
 
 
 
@@ -99,9 +101,8 @@ public class FileAccess implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//InnerFrame frame=new InnerFrame();
-	//	frame.setVisible(true);
-		String ticket=getTicket();
-		JOptionPane.showMessageDialog(null, ticket);	
+		InnerFrame frame=new InnerFrame();
+		frame.setVisible(true);
+	
 	}
 }

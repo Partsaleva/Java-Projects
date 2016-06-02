@@ -1,0 +1,35 @@
+package oneYearLove.source.main;
+
+import java.awt.EventQueue;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
+import oneYearLove.gui.Box;
+
+
+
+public class RunProgram {
+
+	//TODO problem when runnable jar is exported
+	public static void main(String[] args) {
+		
+		try {
+			PrintWriter runApp=new PrintWriter("365love.bat");
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Box frame = new Box();
+					frame.setVisible(true);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+}
