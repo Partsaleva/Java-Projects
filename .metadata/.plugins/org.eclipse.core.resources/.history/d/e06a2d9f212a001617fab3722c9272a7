@@ -1,6 +1,9 @@
 package oneYearLove.source.fileControl;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -51,6 +54,37 @@ public class DateControl {
 		}
 		return date;
 		
-	}	
+	}
+
+	public void saveDayNumber() {
+		
+		int day=getDayNumber();
+		try(DataOutputStream out = new DataOutputStream(
+			new BufferedOutputStream(
+                        new FileOutputStream("bin"+File.separator+"day")))){
+			
+			out.writeInt(day+1);
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public Integer getDayNumber(){
+		ClassLoader classLoader = getClass().getClassLoader();
+		InputStream stream =classLoader.getResourceAsStream("day");
+		int day=0;
+		
+		try(DataInputStream in=new DataInputStream(
+				new BufferedInputStream(stream))){
+			day=in.readInt();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return day;
+		
+	}
 	
 }
