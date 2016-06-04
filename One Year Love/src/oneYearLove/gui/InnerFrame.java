@@ -8,8 +8,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 
+import oneYearLove.source.fileControl.DateControl;
 import oneYearLove.source.fileControl.FileAccess;
+
 import java.awt.Font;
+import java.awt.Toolkit;
 
 public class InnerFrame extends JFrame {
 
@@ -39,16 +42,28 @@ public class InnerFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public InnerFrame() {
+		setTitle("ден " + new DateControl().getDayNumber());
+		setIconImage(Toolkit.getDefaultToolkit().getImage(InnerFrame.class.getResource("/oneYearLove/resourses/love_icon.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(80, 80, 250, 280);
+		setBounds(80, 80, 250, 270);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		String ticket=new FileAccess().getTicket();
+		String ticket=printTicket();
 		JLabel lblNewLabel = new JLabel(ticket);
 		lblNewLabel.setFont(new Font("Century Schoolbook L", Font.BOLD | Font.ITALIC, 17));
 		contentPane.add(lblNewLabel, BorderLayout.NORTH);
 	}
 
+	private String printTicket(){
+		String ticket;
+		DateControl day=new DateControl();
+		if (day.isTheSameDay()) {
+			ticket="Ще трябва да почакаш до утре :) ";
+		} else {
+			ticket=new FileAccess().getTicket();
+		}
+		return ticket;
+	}
 }

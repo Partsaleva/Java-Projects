@@ -1,0 +1,66 @@
+package oneYearLove.gui;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+
+import oneYearLove.source.fileControl.DateControl;
+import oneYearLove.source.fileControl.FileAccess;
+
+import java.awt.Font;
+
+public class InnerFrame extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2112961684093228682L;
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					InnerFrame frame = new InnerFrame();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public InnerFrame() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(80, 80, 250, 275);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		String ticket=printTicket();
+		JLabel lblNewLabel = new JLabel(ticket);
+		lblNewLabel.setFont(new Font("Century Schoolbook L", Font.BOLD | Font.ITALIC, 17));
+		contentPane.add(lblNewLabel, BorderLayout.NORTH);
+	}
+
+	private String printTicket(){
+		String ticket;
+		DateControl day=new DateControl();
+		if (day.isTheSameDay()) {
+			ticket="Ще трябва да почакаш до утре :) ";
+		} else {
+			ticket=new FileAccess().getTicket();
+		}
+		return ticket;
+	}
+}

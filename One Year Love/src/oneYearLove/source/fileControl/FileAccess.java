@@ -71,10 +71,12 @@ public class FileAccess implements ActionListener{
 	
 	
 	private boolean isWeekend(){
-		Calendar startDate = Calendar.getInstance();
-		int dayOfWeek = startDate.get(Calendar.DAY_OF_WEEK);
+		Calendar date = Calendar.getInstance();
+		int dayOfWeek = date.get(Calendar.DAY_OF_WEEK);
 		return dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY;
 	}
+	
+	
 	
 	public String getTicket(){
 		String ticket=null;
@@ -101,8 +103,11 @@ public class FileAccess implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		new DateControl().saveDateOfExecution();
 		InnerFrame frame=new InnerFrame();
-		frame.setVisible(true);
-	
+		frame.setVisible(true);		
+		
 	}
+
+	
 }

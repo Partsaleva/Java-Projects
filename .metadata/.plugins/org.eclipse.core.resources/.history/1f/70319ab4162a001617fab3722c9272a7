@@ -1,0 +1,7 @@
+package oneYearLove.source.fileControl;
+
+import java.io.Serializable;
+
+public class DateAndCount  implements Serializable{
+
+}

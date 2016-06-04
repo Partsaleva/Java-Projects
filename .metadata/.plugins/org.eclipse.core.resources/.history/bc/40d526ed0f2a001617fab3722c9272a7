@@ -1,0 +1,15 @@
+package oneYearLove.source.fileControl;
+
+public class DateControl {
+
+	private boolean isTheSameDay() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+
+	public void saveDateOfExecution() {
+		// TODO Auto-generated method stub
+		
+	}
+}

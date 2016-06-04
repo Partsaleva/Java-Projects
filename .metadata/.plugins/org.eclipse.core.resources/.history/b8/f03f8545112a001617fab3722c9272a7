@@ -1,0 +1,31 @@
+package oneYearLove.source.fileControl;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.Calendar;
+
+public class DateControl {
+
+	
+	private boolean isTheSameDay() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+
+	public void saveDateOfExecution() {
+		Calendar today = Calendar.getInstance();
+		try(ObjectOutputStream out =new ObjectOutputStream(
+				new FileOutputStream("date"))){
+			
+			out.writeObject(today);
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

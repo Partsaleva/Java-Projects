@@ -1,0 +1,21 @@
+package oneYearLove.source.fileControl;
+
+import java.sql.Savepoint;
+import java.util.Calendar;
+
+public class DateControl {
+
+	public static void main(String[] args) {
+		new DateControl().saveDateOfExecution();
+	}
+	private boolean isTheSameDay() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+
+	public void saveDateOfExecution() {
+		Calendar today = Calendar.getInstance();
+		System.out.println(today.toString());
+	}
+}
