@@ -2,6 +2,9 @@ package oneYearLove.source.main;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -36,5 +39,19 @@ public class Menu {
 						new FileOutputStream(dest)))){
 			out.writeObject(fileData);
 		}	
+	}
+	
+	public void nullCounter(){
+		try(DataOutputStream out = new DataOutputStream(
+			new BufferedOutputStream(
+                        new FileOutputStream("bin"+File.separator+"day")))){
+			
+			out.writeInt(0);
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

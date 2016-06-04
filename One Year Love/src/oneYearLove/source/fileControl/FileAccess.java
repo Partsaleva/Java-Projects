@@ -1,5 +1,6 @@
 package oneYearLove.source.fileControl;
 
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedInputStream;
@@ -13,6 +14,7 @@ import java.io.ObjectOutputStream;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
+
 
 
 
@@ -103,10 +105,17 @@ public class FileAccess implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		new DateControl().saveDateOfExecution();
-		InnerFrame frame=new InnerFrame();
-		frame.setVisible(true);		
 		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					InnerFrame frame=new InnerFrame();
+					frame.setVisible(true);	
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});	
 	}
 
 	
