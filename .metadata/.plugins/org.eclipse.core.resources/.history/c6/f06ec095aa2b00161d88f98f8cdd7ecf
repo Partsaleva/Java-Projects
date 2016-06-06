@@ -1,0 +1,5 @@
+package cars.common;
+
+public class CarDataManager {
+
+}

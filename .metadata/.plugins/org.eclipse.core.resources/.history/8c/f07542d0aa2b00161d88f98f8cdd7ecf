@@ -1,0 +1,12 @@
+package cars.common;
+//just test
+public class CarDataManager {
+
+	Car car;
+	public Car removeFuel(int minusFuel){
+		int fuel=car.getFuel()-minusFuel;
+		
+		return new Car(car.getNumber(), car.getBrand(), car.getModel(), fuel);
+		
+	}
+}
